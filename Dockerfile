@@ -26,11 +26,10 @@ COPY . .
 # 7) Install dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# 8) Generate Laravel key
-RUN php artisan key:generate
+# ❌ IMPORTANT: REMOVE key:generate (it breaks the build)
 
-# 9) Expose port
+# 8) Expose port
 EXPOSE 8000
 
-# 10) Start Laravel server
+# 9) Start Laravel server
 CMD php artisan serve --host 0.0.0.0 --port 8000
